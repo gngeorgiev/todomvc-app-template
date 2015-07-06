@@ -1,6 +1,15 @@
 (function (window) {
 	'use strict';
 
-	// Your starting point. Enjoy the ride!
+	window.FiresyncObject = firesync.FiresyncObject;
+	window.FiresyncArray = firesync.FiresyncArray;
+
+	var firebase = new Firebase('https://firesync-todo.firebaseio.com/');
+
+	var $newItemInput = document.querySelector('#new-item');
+	var currentItem = new FiresyncObject(firebase.child('currentItem'))
+		.bindTo($newItemInput, {
+			localAttr: 'value'
+		});
 
 })(window);
